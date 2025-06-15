@@ -2,7 +2,7 @@ import React from "react";
 
 const Courses = () => {
   return (
-    <div className="p-8 m-7 max-w-6xl mx-auto font-sans text-gray-800">
+    <div className="p-8 m-7 max-w-6xl mx-auto text-gray-800">
       <header className="text-center mb-10">
         <h1 className="text-4xl font-bold text-blue-800 mb-2">Our Courses</h1>
         <p className="text-lg text-gray-600">

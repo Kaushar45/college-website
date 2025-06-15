@@ -8,12 +8,14 @@ import Contact from "./pages/Contact";
 import Admission from "./pages/Admission";
 import React from "react";
 import Footer from "./components/Footer";
+
+import VoiceControl from "./VoiceControl";
 function App() {
   return (
     <>
       <Navbar />
       <h1>Hello,I am Home Page</h1>
-
+      <VoiceControl />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
