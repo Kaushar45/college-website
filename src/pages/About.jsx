@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useVoice } from "../context/VoiceContext";
 
 const About = () => {
+  const { shouldRead, setShouldRead } = useVoice();
+  const contentRef = useRef();
+
+  useEffect(() => {
+    if (shouldRead && contentRef.current) {
+      const text = contentRef.current.innerText;
+      const utterance = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.cancel(); // stop existing
+      window.speechSynthesis.speak(utterance);
+      setShouldRead(false); // reset so it doesn't keep reading
+    }
+  }, [shouldRead, setShouldRead]);
   return (
-    <div className="p-8 m-7 max-w-4xl mx-auto font-sans text-gray-800">
+    <div
+      ref={contentRef}
+      className="p-8 m-7 max-w-4xl mx-auto font-sans text-gray-800"
+    >
       <header className="text-center mb-10">
         <h1 className="text-4xl font-bold text-blue-800 mb-2">
           About Our College

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useVoice } from "./context/VoiceContext";
 
 const SpeechRecognition = () => {
   const [transcript, setTranscript] = useState("Click the button and speak");
   const navigate = useNavigate();
+  const { setShouldRead } = useVoice();
 
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -32,20 +34,25 @@ const SpeechRecognition = () => {
         speak(
           "Welcome to the about page. This page contains information about us."
         );
+        setShouldRead(true);
       } else if (speech.includes("home")) {
         navigate("/");
         speak("Welcome to the home page.");
+        setShouldRead(true);
       } else if (speech.includes("contact")) {
         navigate("/contact");
         speak("This is the contact page. Here you can reach out to us.");
+        setShouldRead(true);
       } else if (speech.includes("admission")) {
         navigate("/admission");
         speak(
           "Welcome to the admission page. Here you can find admission details."
         );
+        setShouldRead(true);
       } else if (speech.includes("courses")) {
         navigate("/courses");
         speak("Here are the courses we offer.");
+        setShouldRead(true);
       } else {
         speak("Sorry, I did not recognize that command.");
       }
