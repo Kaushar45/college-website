@@ -9,6 +9,23 @@ const SpeechRecognition = () => {
 
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
+  const getCurrentPageContent = () => {
+    const path = window.location.pathname;
+
+    switch (path) {
+      case "/about":
+        return "Welcome to the about page. This page contains information about us.";
+      case "/contact":
+        return "This is the contact page. Here you can reach out to us.";
+      case "/admission":
+        return "Welcome to the admission page. Here you can find admission details.";
+      case "/courses":
+        return "Here are the courses we offer.";
+      case "/":
+      default:
+        return "Welcome to the home page.";
+    }
+  };
 
   const handleStart = () => {
     if (!SpeechRecognition) {
@@ -53,6 +70,10 @@ const SpeechRecognition = () => {
         navigate("/courses");
         speak("Here are the courses we offer.");
         setShouldRead(true);
+      } else if (speech.includes("read this page again")) {
+        const pageContent = getCurrentPageContent();
+        speak(pageContent);
+        setShouldRead(true); // optional
       } else {
         speak("Sorry, I did not recognize that command.");
       }
