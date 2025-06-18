@@ -73,7 +73,7 @@ const SpeechRecognition = () => {
       } else if (speech.includes("read this page again")) {
         const pageContent = getCurrentPageContent();
         speak(pageContent);
-        setShouldRead(true); // optional
+        setShouldRead(true);
       } else {
         speak("Sorry, I did not recognize that command.");
       }
