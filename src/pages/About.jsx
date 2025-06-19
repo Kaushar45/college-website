@@ -86,8 +86,8 @@ const About = () => {
             contact@mycollege.edu
           </a>
         </p>
-        <p>Phone: +1 (123) 456-7890</p>
-        <p>Address: 123 College Ave, Khamaria, Uttar Pradesh, 221306</p>
+        <p>Phone: +91 7345678900</p>
+        <p>Address: Khamaria, Uttar Pradesh, 221306</p>
       </section>
     </div>
   );
